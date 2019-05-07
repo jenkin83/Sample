@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch NWjs",
             "nwjsVersion": "any",
-            "webRoot": "${workspaceFolder}/04_os",
+            "webRoot": "${workspaceFolder}/01_hello",
             "reloadAfterAttached": true
         },
         {
@@ -17,7 +17,7 @@
             "request": "attach",
             "name": "Attach to NWjs",
             "port": 9222,
-            "webRoot": "${workspaceFolder}/04_os",
+            "webRoot": "${workspaceFolder}/01_hello",
             "reloadAfterAttached": true
         }
     ]
