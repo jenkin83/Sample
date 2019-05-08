@@ -1,6 +1,6 @@
 console.log('this is a module.');
 
-const testVar = 100;
+const testVar = 200;
 
 function testFn (){
     console.log('testFn:',testVar);
