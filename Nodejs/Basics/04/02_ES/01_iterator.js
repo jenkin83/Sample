@@ -1,0 +1,5 @@
+
+function makeIterator(arr){
+    
+
+}
