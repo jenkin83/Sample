@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<style>
+    .class1{
+        background: #444;
+        color:blue;
+    }
+</style>
+<body>
+<div id="app">
+    <div v-bind:class="{'class1':use}">菜鸟教程</div>
+</div>
+	
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    use: false
+  }
+})
+</script>
+</body>
+</html>
