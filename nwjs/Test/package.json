@@ -1,0 +1,11 @@
+{
+    "name": "nw-demo",
+    "version": "0.0.1",
+    "main": "frame.html",
+
+    "single-instance":true,
+    "window":{
+      "show_in_taskbar":false,
+      "kiosk":true
+    }
+  }
