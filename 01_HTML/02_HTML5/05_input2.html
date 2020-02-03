@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>newInputAttr</title>
+</head>
+<body>
+    <form action="form.html">
+
+        <input type="text" placeholder="请输入用户名"/>
+        <br/>
+        <br/>
+        <!--可以简化为 <input type="text" autofocus/>  -->
+        <input type="text" autofocus="autofocus" placeholder="自动获取焦点"/>
+        <br/>
+        <br/>
+        <input type="file" multiple/>
+        <br/>
+        <br/>
+        <input type="text" autocomplete name="identify" placeholder="下次自动补足输入内容"/>
+        <br/>
+        <br/>
+        <!--在火狐浏览器中，如果没有输入内容，点击输入框外部区域，边框会变红-->
+        <input type="text" required placeholder="这是必填项"/>
+        <br/>
+        <br/>
+        <input type="text" accesskey="s" placeholder="获取焦点的快捷键为 alt+s"/>
+        <br/>
+        <br/>
+        <input type="submit"/>
+    </form>
+</body>
+</html>

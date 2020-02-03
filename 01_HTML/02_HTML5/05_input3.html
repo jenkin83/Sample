@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test1</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>学生档案</legend>
+            <label>姓　　名：<input type="text" placeholder="请输入学生姓名"/></label> <br/>
+            <label>手 机 号：<input type="tel" placeholder="请输入学生手机号"/></label><br/>
+            <label>邮　　箱：<input type="email"/></label><br/>
+            <label>所属学院：<input type="text" list="academy"/></label>
+            <datalist id="academy">
+                <option >JAVA学院</option>
+                <option >前端学院</option>
+                <option >PHP学院</option>
+            </datalist><br/>
+            <label>出生日期：<input type="date"/></label><br/>
+            <label>语文成绩：<input type="number" max="100" min="0" value="0"/></label><br/>
+            <label>数学成绩: <meter max="100" min="0" low="59" value="10"></meter></label><br/>
+            <label>英语成绩: <meter max="100" min="0" low="59" value="90"></meter></label><br/>
+            <input type="submit"><br/>
+            <input type="reset">
+
+        </fieldset>
+    </form>
+</body>
+</html>
