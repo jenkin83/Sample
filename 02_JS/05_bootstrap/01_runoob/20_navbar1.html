@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap 实例(本地)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./bootstrap4/bootstrap.min.css">
+  <script src="./bootstrap4/jquery.min.js"></script>
+  <script src="./bootstrap4/popper.min.js"></script>
+  <script src="./bootstrap4/bootstrap.min.js"></script>
+
+  <style>
+    .tab-content{
+        display: none;
+    }
+    .tab-content.active{
+        display: block;
+    }
+  </style>
+</head>
+
+<body>
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active" data-id="tabContent1"><a href="#">标题1</a></li>
+        <li role="presentation" data-id="tabContent2"><a href="#">标题2</a></li>
+        <li role="presentation" data-id="tabContent3"><a href="#">标题3</a></li>
+        </ul>
+
+        <div class="tabs-contents">
+            <!-- 标题1内容区域 -->
+            <div class="tab-content active" id="tabContent1">
+            <table class="table table-striped">
+            <tbody>
+            <tr>
+            <td>标题1</td>
+            <td><input type="text" class="form-control" name="" placeholder="请输入内容" value="content1"></td>
+            </tr>
+            <tr>
+            <td>标题2</td>
+            <td><input type="text" class="form-control" name="" placeholder="请输入内容" value="content2"></td>
+            </tr>
+            <tr>
+            <td>标题3</td>
+            <td><input type="text" class="form-control" name="" placeholder="请输入内容" value="content3"></td>
+            </tr>
+            </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" id="tabSubmit1">提交</button>
+            </div>
+            
+            <!-- 标题2内容区域 -->
+            <div class="tab-content" id="tabContent2">
+            <table class="table table-striped">
+            <tbody></tbody>
+            </table>
+            <button type="button" class="btn btn-primary" id="tabSubmit2">提交</button>
+            </div>
+            <!-- 标题3内容区域 -->
+            <div class="tab-content" id="tabContent3">
+            <table class="table table-striped">
+            <tbody></tbody>
+            </table>
+            <button type="button" class="btn btn-primary" id="tabSubmit3">提交</button>
+            </div>
+            </div>
+</body>
+</html>
+<script>
+    $('.nav-tabs li').click(function(){
+　　$(this).addClass('active').siblings().removeClass('active');
+　　var _id = $(this).attr('data-id');
+　　$('.tabs-contents').find('#'+_id).addClass('active').siblings().removeClass('active');
+
+　　switch(_id){
+　　　　case "tabContent1":
+　　　　　　getTabContent1();
+　　　　　　break;
+　　　　case "tabContent2":
+　　　　　　getTabContent2();
+　　　　　　break;
+　　　　case "tabContent3":
+　　　　　　getTabContent3();
+　　　　　　break;
+　　　　default:
+　　　　　　getTabContent1();
+　　　　　　break;
+　　}
+});
+
+/**
+
+* 获取tab1的内容
+* @return {[type]} [description]
+*/
+function getTabContent1(){
+　　$.get('../json/table1.json',function(response){
+　　console.log("response:====");
+　　console.log(response);
+　　if(response.code === 10000){
+　　　　var data = response.data,
+　　　　tableList = '';
+　　　　data.forEach(function(detail){
+　　　　　　tableList += '<tr>'+
+　　　　　　　　　　'<td>'+detail.title+'</td>'+
+　　　　　　　　　　'<td><input type="text" value="'+detail.content+'" class="form-control" name="" placeholder="请输入内容"></td>'+
+　　　　　　　　　　'</tr>';
+　　　　　　　　});
+　　　　　　$('#tabContent1').find('tbody').html(tableList);
+　　　　}
+　　});
+}
+
+/**
+* tabContent1点击提交
+* @param {[type]} ){ var tabContent1 [description]
+* @return {[type]} [description]
+*/
+$('#tabSubmit1').click(function(){
+　　var tabContent1 = $('#tabContent1');
+　　var trs = tabContent1.find('tr');
+　　params = [];
+　　trs.each(function(index,tr){
+　　　　var obj = {
+　　　　　　title:tabContent1.find('tr').eq(index).children().eq(0).html(),
+　　　　　　content:tabContent1.find('tr').eq(index).children().eq(1).find('input').val()
+　　　　};
+　　　　params.push(obj);
+　　});
+　　console.log("params:====");
+　　console.log(params);
+　　$.post('',params,function(response){
+　　　　if(response.code === 10000){
+　　　　　　alert('更新成功');
+　　　　}else{
+　　　　　　alert('更新失败');
+　　　　}
+　　});
+});
+</script>
